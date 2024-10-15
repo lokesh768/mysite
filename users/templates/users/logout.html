@@ -1,0 +1,17 @@
+{% extends 'food/base.html' %}
+
+{% block body %}
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6 col-lg-4">
+            <div class="card shadow-lg border-0">
+                <div class="card-body text-center p-5">
+                    <h2 class="card-title text-success mb-4">You've been logged out!</h2>
+                    <p class="mb-4">We hope to see you back soon. Click below to log in again and continue exploring.</p>
+                    <a href="{% url 'login' %}" class="btn btn-info btn-lg w-100">Log In Again</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

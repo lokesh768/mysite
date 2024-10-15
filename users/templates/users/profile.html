@@ -1,0 +1,55 @@
+{% extends 'food/base.html' %}
+
+{% block body %}
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6 text-center">
+            <!-- Profile Image -->
+            <div class="profile-img-wrapper mb-4">
+                <img src="{{ user.profile.image.url }}" alt="{{ user.username }}" class="rounded-circle img-thumbnail" width="150px" height="150px">
+            </div>
+            <!-- Username -->
+            <h2 class="profile-username">{{ user.username }}</h2>
+            <!-- Email -->
+            <p class="profile-email text-muted">{{ user.email }}</p>
+            <!-- Location -->
+            <p class="profile-location text-muted"><i class="bi bi-geo-alt-fill"></i> {{ user.profile.location }}</p>
+            
+            <!-- Action Buttons (like edit profile, etc.) -->
+            <div class="mt-4">
+                
+                <a href="{% url 'logout' %}" class="btn btn-outline-danger">Logout</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Inline CSS in the template itself -->
+<style>
+    /* Profile Image */
+    .profile-img-wrapper img {
+        border-radius: 50%;
+        border: 3px solid #f1f1f1;
+    }
+
+    /* Profile Username */
+    .profile-username {
+        font-weight: bold;
+        font-size: 1.8rem;
+        margin-bottom: 10px;
+    }
+
+    /* Profile Email and Location */
+    .profile-email, .profile-location {
+        font-size: 1rem;
+        color: #6c757d;
+    }
+
+    /* Profile Buttons */
+    .btn-outline-info, .btn-outline-danger {
+        width: 150px;
+        margin: 5px;
+        font-weight: bold;
+    }
+</style>
+{% endblock %}
