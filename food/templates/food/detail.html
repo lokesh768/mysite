@@ -1,18 +1,90 @@
 {% extends 'food/base.html' %}
 
 {% block body %}
-
     <div class="container">
-        <div class="row">
-            <div class="col-md-6">
-                <img style="height: 300px; width: auto;" src="{{ item.item_image }}" class="card"  />
+        <div class="row justify-content-center">
+            <div class="col-md-5 mb-4">
+                <!-- Item Image with responsive design -->
+                <img src="{{ item.item_image }}" class="img-fluid rounded shadow-sm" alt="{{ object.item_name }}" />
             </div>
-            <div class="col-md-6">
-                <h1>{{ object.item_name }} </h1>
-                <h2>{{ object.item_description }}</h2>
-                <h3>${{ object.item_price }} </h3>
-                <a href="{% url 'food:delete_item' item.id %}" class="btn btn-danger" >Delete</a>
+            <div class="col-md-7">
+                <h1 class="display-4 text-primary mb-3">{{ object.item_name }}</h1>
+                <p class="lead text-muted">{{ object.item_description }}</p>
+                <h3 class="text-success mb-4">${{ object.item_price }}</h3>
+                
+                <!-- Action buttons -->
+                <div class="d-grid gap-2 d-md-block">
+                    <a href="{% url 'food:delete_item' item.id %}" class="btn btn-danger btn-lg">Delete</a>
+                    <a href="{% url 'food:index' %}" class="btn btn-secondary btn-lg">Back to Menu</a>
+                </div>
             </div>
         </div>
     </div>
+
+    <!-- Inline CSS for styling -->
+    <style>
+        .container {
+            padding-top: 0; /* Removed all top padding */
+            padding-bottom: 30px; /* Adjusted bottom padding */
+        }
+
+        .display-4 {
+            font-weight: bold;
+        }
+
+        .lead {
+            font-size: 1.25rem;
+            line-height: 1.6;
+        }
+
+        .img-fluid {
+            max-height: 400px;
+            object-fit: cover;
+        }
+
+        .btn-lg {
+            padding: 10px 20px;
+            font-size: 1.25rem;
+        }
+
+        .btn-danger {
+            background-color: #e74c3c;
+            border-color: #e74c3c;
+        }
+
+        .btn-danger:hover {
+            background-color: #c0392b;
+            border-color: #c0392b;
+        }
+
+        .btn-secondary {
+            background-color: #95a5a6;
+            border-color: #95a5a6;
+        }
+
+        .btn-secondary:hover {
+            background-color: #7f8c8d;
+            border-color: #7f8c8d;
+        }
+
+        /* Media query to improve responsiveness on smaller devices */
+        @media (max-width: 767px) {
+            .container {
+                padding-top: 0; /* No top padding for mobile */
+                padding-bottom: 20px;
+            }
+
+            .display-4 {
+                font-size: 2rem;
+            }
+
+            .lead {
+                font-size: 1rem;
+            }
+
+            .img-fluid {
+                max-height: 300px;
+            }
+        }
+    </style>
 {% endblock %}

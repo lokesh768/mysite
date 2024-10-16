@@ -1,31 +1,114 @@
 {% extends 'food/base.html' %}
 
 {% block body %}
-<div class="container mt-5">
+<div class="container mt-2">
     {% for item in item_list %}
     <div class="card mb-4 shadow-sm">
-        <div class="row g-0">
+        <div class="row g-0 align-items-center">
             <!-- Item Image -->
             <div class="col-md-3">
-                <img src="{{ item.item_image }}" alt="{{ item.item_name }}" class="img-fluid rounded-start" style="height: 200px; object-fit: cover;">
+                <img src="{{ item.item_image }}" alt="{{ item.item_name }}" class="img-fluid rounded-start"
+                     style="height: 220px; width: 100%; object-fit: cover;">
             </div>
 
             <!-- Item Details -->
             <div class="col-md-6">
                 <div class="card-body">
-                    <h3 class="card-title">{{ item.item_name }}</h3>
-                    <p class="card-text">{{ item.item_description }}</p>
-                    <h5 class="text-success">${{ item.item_price }}</h5>
-                    <p class="text-muted">Posted by: {{ item.user_name.username }}</p>
+                    <h3 class="card-title text-primary">{{ item.item_name }}</h3>
+                    <p class="card-text text-muted">{{ item.item_description }}</p>
+                    <h4 class="text-success">${{ item.item_price }}</h4>
+                    <p class="text-muted small">Posted by: <strong>{{ item.user_name.username }}</strong></p>
                 </div>
             </div>
 
             <!-- Details Button -->
             <div class="col-md-3 d-flex align-items-center justify-content-center">
-                <a href="{% url 'food:detail' item.id %}" class="btn btn-info btn-lg w-75">View Details</a>
+                <a href="{% url 'food:detail' item.id %}" class="btn btn-info btn-md">View Details</a>
             </div>
         </div>
     </div>
     {% endfor %}
 </div>
+
+<!-- Inline CSS for styling -->
+<style>
+    .card {
+        border-radius: 10px;
+        overflow: hidden;
+        transition: box-shadow 0.3s ease;
+    }
+
+    .card:hover {
+        box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .card-title {
+        font-weight: bold;
+        font-size: 1.5rem;
+    }
+
+    .card-text {
+        font-size: 1rem;
+        color: #555;
+    }
+
+    .text-success {
+        font-size: 1.25rem;
+        font-weight: 600;
+    }
+
+    .btn-info {
+        background-color: #17a2b8;
+        border-color: #17a2b8;
+        padding: 0.5rem 1rem;
+    }
+
+    .btn-info:hover {
+        background-color: #138496;
+        border-color: #117a8b;
+    }
+
+    /* Reduce button width */
+    .btn-md {
+        font-size: 0.875rem;
+        padding: 0.4rem 0.8rem;
+        width: 60%; /* Reduced width for the button */
+        max-width: 180px; /* Maximum width for the button */
+    }
+
+    .img-fluid {
+        height: 220px;
+        width: 100%;
+        object-fit: cover;
+    }
+
+    .container {
+        padding-bottom: 50px;
+    }
+
+    /* Media query for smaller screens */
+    @media (max-width: 768px) {
+        .card {
+            margin-bottom: 20px;
+        }
+
+        .img-fluid {
+            height: 200px;
+        }
+
+        /* Reduce button size and adjust width further on mobile */
+        .btn-md {
+            font-size: 0.75rem;
+            padding: 0.35rem 0.7rem;
+            width: 70%; /* Increase width slightly on smaller screens */
+            max-width: 150px;
+        }
+
+        .col-md-3.d-flex {
+            justify-content: flex-start; /* Align the button on mobile */
+            padding: 1rem; /* Add padding around button */
+        }
+    }
+</style>
+
 {% endblock %}
