@@ -11,7 +11,7 @@ class Item(models.Model):
     item_name = models.CharField(max_length=200)
     item_description = models.CharField(max_length=400)
     item_price = models.IntegerField()
-    item_image = models.CharField(max_length=1000, default="https://plakarestaurant.ca/wp-content/themes/twentytwentythree-child/img/food-placeholder.png")
+    item_image = models.ImageField(default='comingsoon.jpg', upload_to='item_pictures')
 
     def get_absolute_url(self):
         return reverse("food:detail", kwargs={"pk": self.pk})

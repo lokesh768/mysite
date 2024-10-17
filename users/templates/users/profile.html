@@ -3,7 +3,11 @@
 {% block body %}
 <div class="container mt-5">
     <div class="row justify-content-center">
-        <div class="col-md-6 text-center">
+        <div class="col-md-6 text-center position-relative">
+            <!-- Floating Edit Button -->
+            <a href="{% url 'editprofile' %}" class="edit-profile-btn btn btn-outline-primary position-absolute">
+                <i class="bi bi-pencil-square"></i>
+            </a>
             <!-- Profile Image -->
             <div class="profile-img-wrapper mb-4">
                 <img src="{{ user.profile.image.url }}" alt="{{ user.username }}" class="rounded-circle img-thumbnail" width="150px" height="150px">
@@ -15,9 +19,8 @@
             <!-- Location -->
             <p class="profile-location text-muted"><i class="bi bi-geo-alt-fill"></i> {{ user.profile.location }}</p>
             
-            <!-- Action Buttons (like edit profile, etc.) -->
+            <!-- Action Buttons -->
             <div class="mt-4">
-                
                 <a href="{% url 'logout' %}" class="btn btn-outline-danger">Logout</a>
             </div>
         </div>
@@ -30,6 +33,11 @@
     .profile-img-wrapper img {
         border-radius: 50%;
         border: 3px solid #f1f1f1;
+        transition: transform 0.3s ease;
+    }
+
+    .profile-img-wrapper img:hover {
+        transform: scale(1.05);
     }
 
     /* Profile Username */
@@ -45,11 +53,35 @@
         color: #6c757d;
     }
 
+    /* Edit Profile Button */
+    .edit-profile-btn {
+        top: -20px;
+        right: 20px;
+        background-color: #fff;
+        border-radius: 50%;
+        padding: 10px;
+        border: 2px solid #007bff;
+        transition: background-color 0.3s ease, border-color 0.3s ease;
+    }
+
+    .edit-profile-btn:hover {
+        background-color: #007bff;
+        color: #fff;
+    }
+
+    .edit-profile-btn i {
+        font-size: 1.5rem;
+    }
+
     /* Profile Buttons */
     .btn-outline-info, .btn-outline-danger {
         width: 150px;
         margin: 5px;
         font-weight: bold;
+    }
+
+    .btn-outline-info:hover, .btn-outline-danger:hover {
+        transform: scale(1.05);
     }
 </style>
 {% endblock %}
