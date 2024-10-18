@@ -6,3 +6,4 @@ sqlparse==0.5.1
 tzdata==2024.2
 whitenoise==6.7.0
 azure-storage==0.37.1
+azure-storage-blob==12.14.1  # (or the latest version installed)
