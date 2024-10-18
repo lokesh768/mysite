@@ -11,9 +11,8 @@ SECRET_KEY = os.environ.get('SECRET_KEY', 'default-secret-key')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['food-app-h6e7a5ckgbgeh8eb.australiaeast-01.azurewebsites.net',
-                    'localhost', 
-    '127.0.0.1',]
+ALLOWED_HOSTS = ['food-app-h6e7a5ckgbgeh8eb.australiaeast-01.azurewebsites.net',]
+CSRF_TRUSTED_ORIGINS = ['https://food-app-h6e7a5ckgbgeh8eb.australiaeast-01.azurewebsites.net']
 
 
 # Application definition
