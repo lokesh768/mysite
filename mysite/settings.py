@@ -26,6 +26,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'food.apps.FoodConfig',
     'users.apps.UsersConfig',
+    'storages',
 ]
 
 MIDDLEWARE = [
@@ -114,8 +115,8 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 LOGIN_REDIRECT_URL = 'food:index'
 LOGIN_URL = 'login'
 
-MEDIA_ROOT = os.path.join(BASE_DIR,'pictures')
-MEDIA_URL = '/pictures/'
+# MEDIA_ROOT = os.path.join(BASE_DIR,'pictures')
+# MEDIA_URL = '/pictures/'
 
 
 # email configuration
@@ -126,3 +127,11 @@ EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'loki32903@gmail.com' 
 EMAIL_HOST_PASSWORD = 'mdhuwwxtnunygtkc'
 DEFAULT_FROM_EMAIL = 'loki32903@gmail.com'
+
+# Azure Storage Configuration
+DEFAULT_FILE_STORAGE = 'storages.backends.azure_storage.AzureStorage'
+AZURE_ACCOUNT_NAME = 'loki4143gg'  # Storage account name from Step 1
+AZURE_ACCOUNT_KEY = 'q9Dy8qUSvc5MdQrfwrQnt2Y9reSeb0Gg7szrKZYa4N5aldVb9AYdUHIdH/KRWB8DiQd2yJC6mYW6+ASt9wmxXQ=='  # Access key from Step 1
+AZURE_CONTAINER = 'pictures'  # Container name from Step 1
+AZURE_SSL = True  # Enable SSL for secure connection
+
