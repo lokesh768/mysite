@@ -14,7 +14,7 @@
                 
                 <!-- Action buttons -->
                 <div class="d-grid gap-2 d-md-block">
-                    {% if request.user.username == object.user.username %}
+                    {% if request.user.username == object.user_name.username %}
                     <a href="{% url 'food:delete_item' item.id %}" class="btn btn-danger btn-lg">Delete</a>
                     {% endif %}
                     <a href="{% url 'food:index' %}" class="btn btn-secondary btn-lg">Back to Menu</a>
