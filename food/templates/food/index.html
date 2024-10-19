@@ -33,22 +33,22 @@
 <!-- Pagination -->
 <div class="d-flex justify-content-center mt-4">
     <nav aria-label="Page navigation">
-        <ul class="pagination custom-pagination flex-wrap">
+        <ul class="pagination pagination-lg">
             {% if item_list.has_previous %}
                 <li class="page-item">
                     <a class="page-link text-primary" href="?page=1" aria-label="First">First</a>
                 </li>
                 <li class="page-item">
-                    <a class="page-link text-primary" href="?page={{ item_list.previous_page_number }}" aria-label="Previous">
-                        &laquo; Previous
+                    <a class="page-link text-primary" href="?page={{ item_list.previous_page_number }}" aria-label="Prev">
+                        &laquo; Prev
                     </a>
                 </li>
             {% else %}
                 <li class="page-item disabled">
-                    <a class="page-link text-secondary">First</a>
+                    <a class="page-link text-secondary" aria-disabled="true">First</a>
                 </li>
                 <li class="page-item disabled">
-                    <a class="page-link text-secondary">&laquo; Previous</a>
+                    <a class="page-link text-secondary" aria-disabled="true">&laquo; Prev</a>
                 </li>
             {% endif %}
 
@@ -69,17 +69,17 @@
                 </li>
             {% else %}
                 <li class="page-item disabled">
-                    <a class="page-link text-secondary">Next &raquo;</a>
+                    <a class="page-link text-secondary" aria-disabled="true">Next &raquo;</a>
                 </li>
                 <li class="page-item disabled">
-                    <a class="page-link text-secondary">Last</a>
+                    <a class="page-link text-secondary" aria-disabled="true">Last</a>
                 </li>
             {% endif %}
         </ul>
     </nav>
 </div>
 
-<!-- Inline CSS for responsive styling -->
+<!-- Inline CSS for styling -->
 <style>
     .card {
         border-radius: 10px;
@@ -91,75 +91,51 @@
         box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
     }
 
-    /* Pagination Styling */
-    .custom-pagination .page-item .page-link {
+    .pagination-lg .page-link {
         border-radius: 30px;
-        padding: 0.5rem 1.2rem;
+        padding: 0.75rem 1.25rem;
         font-size: 1.1rem;
-        margin: 0 5px;
-        background-color: transparent;
-        color: #17a2b8;
-        border: none;
-        font-weight: bold;
-        text-decoration: none; /* Remove underline */
+        text-decoration: none;
     }
 
-    .custom-pagination .page-item .page-link:hover {
+    .pagination .page-item .page-link {
+        color: #17a2b8;
+        border: none;
+    }
+
+    .pagination .page-item .page-link:hover {
         background-color: #e3f2fd;
         color: #007bff;
     }
 
-    .custom-pagination .page-item.active .page-link {
+    .pagination .page-item.active .page-link {
         background-color: #007bff;
+        border-color: #007bff;
         color: white;
     }
 
-    .custom-pagination .page-item.disabled .page-link {
-        color: #adb5bd;
+    .pagination .page-item.disabled .page-link {
+        color: #6c757d;
     }
 
-    /* Mobile responsiveness */
-    @media (max-width: 768px) {
-        .custom-pagination {
-            font-size: 1.0rem;
-            justify-content: center;
-        }
-
-        .custom-pagination .page-item .page-link {
-            padding: 0.4rem 1rem;
-            margin: 0 3px;
-            font-size: 1rem;
-        }
-
-        .img-fluid {
-            height: 180px;
-        }
-
-        /* Ensure the pagination doesn't overflow */
-        .pagination {
-            flex-wrap: wrap;
-        }
-    }
-
+    /* For mobile responsiveness */
     @media (max-width: 576px) {
-        .custom-pagination {
-            font-size: 0.9rem;
-            justify-content: center;
-        }
-
-        .custom-pagination .page-item .page-link {
-            padding: 0.3rem 0.8rem;
-            margin: 0 2px;
-            font-size: 0.9rem;
-        }
-
         .pagination {
-            justify-content: center;
+            font-size: 0.9rem;
         }
 
-        /* Further reduce image height on smaller screens */
-        .img-fluid {
-            height: 150px;
+        .pagination-lg .page-link {
+            padding: 0.5rem 0.9rem;
+            font-size: 0.9rem;
+        }
+
+        .pagination .page-item {
+            display: inline-block;
+            width: auto;
+        }
+
+        .pagination .page-link {
+            padding: 0.5rem;
         }
     }
 </style>
