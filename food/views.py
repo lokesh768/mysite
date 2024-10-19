@@ -14,6 +14,11 @@ def Welcome(request):
 def index(request):
     items = Item.objects.all()
 
+    item = request.GET.get('item_name')
+
+    if item != '' and item is not None:
+        items = items.filter(item_name__icontains=item)
+        
     # paginator
     paginator = Paginator(items,2)
     page = request.GET.get('page')
