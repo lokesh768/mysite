@@ -33,7 +33,7 @@
 <!-- Pagination -->
 <div class="d-flex justify-content-center mt-4">
     <nav aria-label="Page navigation">
-        <ul class="pagination custom-pagination">
+        <ul class="pagination custom-pagination flex-wrap">
             {% if item_list.has_previous %}
                 <li class="page-item">
                     <a class="page-link text-primary" href="?page=1" aria-label="First">First</a>
@@ -91,16 +91,17 @@
         box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
     }
 
-    /* Responsive Pagination */
+    /* Pagination Styling */
     .custom-pagination .page-item .page-link {
         border-radius: 30px;
-        padding: 0.5rem 1.5rem;
+        padding: 0.5rem 1.2rem;
         font-size: 1.1rem;
-        margin: 0 8px;
+        margin: 0 5px;
         background-color: transparent;
         color: #17a2b8;
         border: none;
         font-weight: bold;
+        text-decoration: none; /* Remove underline */
     }
 
     .custom-pagination .page-item .page-link:hover {
@@ -119,33 +120,46 @@
 
     /* Mobile responsiveness */
     @media (max-width: 768px) {
+        .custom-pagination {
+            font-size: 1.0rem;
+            justify-content: center;
+        }
+
         .custom-pagination .page-item .page-link {
-            font-size: 1.2rem;
-            padding: 0.6rem 1.8rem;
-        }
-
-        .pagination {
-            justify-content: space-between;
-        }
-
-        /* Reduce card size for mobile */
-        .card {
-            margin-bottom: 15px;
+            padding: 0.4rem 1rem;
+            margin: 0 3px;
+            font-size: 1rem;
         }
 
         .img-fluid {
             height: 180px;
         }
+
+        /* Ensure the pagination doesn't overflow */
+        .pagination {
+            flex-wrap: wrap;
+        }
     }
 
     @media (max-width: 576px) {
+        .custom-pagination {
+            font-size: 0.9rem;
+            justify-content: center;
+        }
+
         .custom-pagination .page-item .page-link {
-            font-size: 1rem;
-            padding: 0.5rem 1.5rem;
+            padding: 0.3rem 0.8rem;
+            margin: 0 2px;
+            font-size: 0.9rem;
         }
 
         .pagination {
-            justify-content: space-around;
+            justify-content: center;
+        }
+
+        /* Further reduce image height on smaller screens */
+        .img-fluid {
+            height: 150px;
         }
     }
 </style>
