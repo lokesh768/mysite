@@ -1,7 +1,24 @@
 {% extends 'food/base.html' %}
 
 {% block body %}
-<div class="container mt-2">
+<!-- Heading and Search Bar -->
+<div class="container-fluid bg-light py-4">
+    <div class="container text-center">
+        <h1 class="display-4 text-primary mb-3">Discover Food Recipes</h1>
+        <p class="lead text-muted mb-4">Find the best food recipes curated just for you!</p>
+        
+        <!-- Search Bar -->
+        <form method="GET" action="" class="d-flex justify-content-center">
+            <input class="form-control form-control-lg w-50 me-2" type="search" placeholder="Search for recipes..." aria-label="Search" name="item_name">
+            <button class="btn btn-primary btn-lg" type="submit">
+                <i class="bi bi-search"></i> <!-- Bootstrap Search Icon -->
+            </button>
+        </form>
+    </div>
+</div>
+
+<!-- Item Cards -->
+<div class="container mt-4">
     {% for item in item_list %}
     <div class="card mb-4 shadow-sm">
         <div class="row g-0 align-items-center">
@@ -79,8 +96,38 @@
     </nav>
 </div>
 
-<!-- Inline CSS for styling -->
+<!-- Inline CSS for Styling -->
 <style>
+    /* General Layout */
+    .container-fluid.bg-light {
+        background-color: #f8f9fa;
+    }
+
+    /* Heading Styles */
+    h1.display-4 {
+        font-size: 2.5rem;
+        font-weight: 700;
+    }
+
+    .lead {
+        font-size: 1.25rem;
+    }
+
+    /* Search Bar Styles */
+    .form-control-lg {
+        font-size: 1.2rem;
+        padding: 0.75rem;
+    }
+
+    .btn-lg {
+        padding: 0.75rem 1.5rem;
+        font-size: 1.2rem;
+        display: flex;
+        align-items: center;
+        gap: 0.4rem;
+    }
+
+    /* Card Styles */
     .card {
         border-radius: 10px;
         overflow: hidden;
@@ -103,14 +150,8 @@
         border: none;
     }
 
-    .pagination .page-item .page-link:hover {
-        background-color: #e3f2fd;
-        color: #007bff;
-    }
-
     .pagination .page-item.active .page-link {
         background-color: #007bff;
-        border-color: #007bff;
         color: white;
     }
 
@@ -118,24 +159,28 @@
         color: #6c757d;
     }
 
-    /* For mobile responsiveness */
+    /* Mobile Responsiveness */
     @media (max-width: 576px) {
-        .pagination {
-            font-size: 0.9rem;
+        h1.display-4 {
+            font-size: 2rem;
+        }
+
+        .lead {
+            font-size: 1rem;
+        }
+
+        .form-control-lg {
+            width: 80%;
+        }
+
+        .btn-lg {
+            padding: 0.6rem 1.2rem;
+            font-size: 1rem;
         }
 
         .pagination-lg .page-link {
             padding: 0.5rem 0.9rem;
             font-size: 0.9rem;
-        }
-
-        .pagination .page-item {
-            display: inline-block;
-            width: auto;
-        }
-
-        .pagination .page-link {
-            padding: 0.5rem;
         }
     }
 </style>
