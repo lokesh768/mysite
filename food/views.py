@@ -5,17 +5,21 @@ from .forms import ItemForm
 from django.views.generic.edit import CreateView
 from django.views.generic.detail import DetailView
 from django.contrib.auth.decorators import login_required
+from django.core.paginator import Paginator
 
 def Welcome(request):
     return render(request, 'food/welcome.html')
 
 @login_required()
 def index(request):
-    item_list = Item.objects.all()
-    context = {
-        'item_list':item_list,
-    }
-    return render(request, 'food/index.html', context)
+    items = Item.objects.all()
+
+    # paginator
+    paginator = Paginator(items,2)
+    page = request.GET.get('page')
+    item_list = paginator.get_page(page)
+    
+    return render(request, 'food/index.html', {'item_list':item_list})
 
 
 # this is class based view for detailing each item
